@@ -218,25 +218,25 @@ int main()
     {
         for(int j = 0; j < 4; j++)
         {
-            if(j == 0)
+            if(j == 0) //Preenche a coluna das matrículas
             {
                 printf("Digite a matrícula do aluno %d\n", i + 1);
                 scanf("%f", &buffer);
                 Notas[i][j] = buffer;
             }
-            else if(j == 1)
+            else if(j == 1) //Preenche as colunas das medias das provas
             {
                 printf("Digite a media das provas do aluno\n");
                 scanf("%f", &buffer);
                 Notas[i][j] = buffer;
             }
-            else if(j == 2)
+            else if(j == 2) //Preenche a coluna das medias dos trabalhos
             {
                 printf("Digite a media dos trabalhos:\n");
                 scanf("%f", &buffer);
                 Notas[i][j] = buffer;
             }
-            else if(j == 3)
+            else if(j == 3) //Preenche a coluna das Notas Finais 
             {
                 Notas[i][j] = Notas[i][1] + Notas[i][2];
             }
@@ -247,24 +247,99 @@ int main()
     {
         for(int j = 0; j < 4; j++)
         {
-            printf("%.1f  ", Notas[i][j]);
+            printf("%.1f  ", Notas[i][j]); //Imprime cada elemento da matriz
         }
-        printf("\n");
+        printf("\n"); //Quebra a linha quando termina de preencher a linha i
     }
 
     for(int i = 0; i < 5; i++)
     {
-        mediaAlunos += Notas[i][3];
-        if(Notas[i][3] > maior)
+        mediaAlunos += Notas[i][3]; //Concatena as notas de todos os alunos 
+        if(Notas[i][3] > maior) //Verifica todas as notas até encontrar a maior
         {
-            maior = Notas[i][3];
-            alunoMaior = Notas[i][0];
+            maior = Notas[i][3]; //Armazena a maior nota
+            alunoMaior = Notas[i][0]; //Armazena a matrícula do aluno com maior nota
         }
     }
 
-    mediaAlunos = mediaAlunos/5;
+    mediaAlunos = mediaAlunos/5; //Calculo da media dos alunos 
     printf("Aluno com maior nota: %d\n", alunoMaior);
     printf("Media das notas: %.2f\n", mediaAlunos);
+
+    return 0;
+}
+````
+
+8. Resolução:
+```c
+#include <stdio.h>
+
+int main()
+{
+    // Declaração das variáveis
+    int valor_inteiro;
+    float valor_real;
+    char caractere;
+
+    // Declaração dos ponteiros
+    int *ptr_inteiro = &valor_inteiro;
+    float *ptr_real = &valor_real;
+    char *ptr_caractere = &caractere;
+
+    valor_inteiro = 10;
+    valor_real = 1.5;
+    caractere = 'L';
+
+    // Exibe os endereços e conteúdos antes da alteração
+    printf("\nAntes da alteracao:\n");
+    printf("Valor inteiro: %d\n Valor real: %.2f\n Caractere: %c\n", valor_inteiro, valor_real, caractere);
+
+    printf("Com ponteiros: \n x = %d\n y = %.2f\n z = %c\n", *ptr_inteiro, *ptr_real, *ptr_caractere);
+
+    printf("Endereço das variáveis:\n x = %p\n y = %p\n z = %p\n", ptr_inteiro, ptr_real, ptr_caractere);
+    printf("Endereço dos ponteiros das variaveis: \n *x = %p\n *y = %p\n *z = %p\n", &ptr_inteiro, &ptr_real, &ptr_caractere);
+
+    // Solicita os valores novos para as variáveis
+    printf("Digite um valor inteiro, um valor real e um caractere:\n");
+    scanf("%d %f %c", ptr_inteiro, ptr_real, ptr_caractere); //Nao precisa de *
+
+    printf("Ponteiro para inteiro: conteudo = %d, endereco = %p endereco do ponteiro = %p\n\n", *ptr_inteiro, ptr_inteiro, &ptr_inteiro);
+
+    printf("Ponteiro para real: conteudo = %.2f, endereco = %p endereco do ponteiro = %p\n\n", *ptr_real, ptr_real,&ptr_real);
+
+    printf("Ponteiro para caractere: conteudo = %c, endereco = %p endereco do ponteiro = %p\n\n", *ptr_caractere, ptr_caractere, &ptr_caractere);
+
+    return 0;
+}
+````
+
+9. Resolução:
+```c
+#include <stdio.h>
+
+// Procedimento para calcular comprimento e área
+void calcCircunferencia(float R, float *compr, float *area)
+{
+    float PI = 3.14;
+    *compr = 2 * PI * R;      // Calcula o comprimento da circunferência
+    *area = PI * R * R;        // Calcula a área da circunferência
+}
+
+int main()
+{
+    float raio, comprimento, area;
+    float *Circun = &comprimento, *Area = &area;
+
+    // Solicita o valor do raio ao usuário
+    printf("Digite o valor do raio da circunferencia: ");
+    scanf("%f", &raio);
+
+    // Chama o procedimento para calcular comprimento e área
+    calcCircunferencia(raio, Circun, Area);
+
+    // Exibe os resultados
+    printf("Comprimento da circunferencia: %.2f\n", *Circun);
+    printf("Área da circunferencia: %.2f\n", *Area);
 
     return 0;
 }
