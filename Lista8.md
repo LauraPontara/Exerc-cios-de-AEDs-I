@@ -147,3 +147,60 @@ int main()
     return 0;
 }
 ````
+5. Resolução:
+6. Resolução:
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    int cont = 0, j = 0;
+    char cadeia1[100], cadeia2[100], inverte[100];
+
+    printf("Digite uma frase ou palavra:\n");
+    fgets(cadeia1, sizeof(cadeia1), stdin); //fgets le tudo até o enter, inclui o \n dentro da string
+
+    // Remove o '\n' no final de cadeia1, se existir
+    cadeia1[strcspn(cadeia1, "\n")] = '\0';
+
+    /*
+    strcspn é uma função da biblioteca <string.h> em C, que busca
+    o primeiro caractere de uma string (str1) que coincide com
+    qualquer caractere de outra string (str2) e retorna a posição
+    (índice) desse caractere em str1. Se nenhum caractere
+    coincidente for encontrado, ela retorna o comprimento de str1
+    */
+
+    for(int i = 0; i < strlen(cadeia1); i++)
+    {
+        if(cadeia1[i] == ' ' || cadeia1[i] == '\0')
+        {
+            cont++;
+        }
+        else
+        {
+            cadeia2[j] = cadeia1[i];
+            j++;
+        }
+    }
+    cadeia2[j] = '\0';
+
+    for(int i = 0; i < strlen(cadeia2); i++)
+    {
+        inverte[i] = cadeia2[strlen(cadeia2)-i-1];
+    }
+    inverte[strlen(cadeia2)] = '\0';
+    if(strcmp(cadeia2, inverte) == 0)
+    {
+        printf("%s eh um palindromo!\n", cadeia1);
+    }
+    else
+    {
+        printf("%s nao eh um palindromo!\n", cadeia1);
+    }
+
+
+    return 0;
+}
+```
