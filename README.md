@@ -180,6 +180,7 @@ return 0;
 deve ler um valor k, onde k é positivo e menor que o tamanho do vetor (rejeite entradas
 inválidas). Implemente um procedimento que receba como parâmetros o vetor A, o tamanho
 do vetor |A| e o valor k. Retorne o k-ésimo menor elemento do vetor.
+
 Ex.: A = {3, 5, 7, 8 ,12, 14, 15, 16}, k = 3, retorno = 7.
 
 12. Escreva um programa que leia do teclado um valor n. Instancie, usando o comando malloc,
