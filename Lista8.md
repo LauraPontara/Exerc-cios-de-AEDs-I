@@ -204,3 +204,68 @@ int main()
     return 0;
 }
 ```
+
+7. Resolução:
+```c
+#include <stdio.h>
+
+int main()
+{
+    float Notas[5][4], buffer = 0, mediaAlunos = 0, maior = 0;
+    int alunoMaior = 0;
+
+    for(int i = 0; i < 5; i++)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+            if(j == 0)
+            {
+                printf("Digite a matrícula do aluno %d\n", i + 1);
+                scanf("%f", &buffer);
+                Notas[i][j] = buffer;
+            }
+            else if(j == 1)
+            {
+                printf("Digite a media das provas do aluno\n");
+                scanf("%f", &buffer);
+                Notas[i][j] = buffer;
+            }
+            else if(j == 2)
+            {
+                printf("Digite a media dos trabalhos:\n");
+                scanf("%f", &buffer);
+                Notas[i][j] = buffer;
+            }
+            else if(j == 3)
+            {
+                Notas[i][j] = Notas[i][1] + Notas[i][2];
+            }
+        }
+    }
+
+    for(int i = 0; i < 5; i++)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+            printf("%.1f  ", Notas[i][j]);
+        }
+        printf("\n");
+    }
+
+    for(int i = 0; i < 5; i++)
+    {
+        mediaAlunos += Notas[i][3];
+        if(Notas[i][3] > maior)
+        {
+            maior = Notas[i][3];
+            alunoMaior = Notas[i][0];
+        }
+    }
+
+    mediaAlunos = mediaAlunos/5;
+    printf("Aluno com maior nota: %d\n", alunoMaior);
+    printf("Media das notas: %.2f\n", mediaAlunos);
+
+    return 0;
+}
+````
