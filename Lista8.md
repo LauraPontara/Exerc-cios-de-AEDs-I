@@ -383,13 +383,18 @@ int main() {
 int main()
 {
     float **M; //Cria um ponteiro de um ponteiro para a matriz (bidimencional)
+/*
+    Matriz = array de ponteiros
+    Cada poteiro aponta para uma linha da matriz
+*/
     int n = 0;
 
     printf("Digite a quantidade de colunas/linhas:\n");
     scanf("%d", &n);
 
     // Aloca um array de ponteiros para as linhas
-    M = (float **)malloc(n * sizeof(float *));
+    M = (float **)malloc(n * sizeof(float *)); //Retornará um ponteiro de ponteiro do tipo float e serão alocados n tamanhos em byte de um ponteiro do tipo float
+/*É necessário ter um ponteiro apontando para a matriz como um todo*/
     if (M == NULL) {
         printf("Erro ao alocar memória.\n");
         return 1;
@@ -397,7 +402,7 @@ int main()
 
     // Aloca cada linha individualmente
     for (int i = 0; i < n; i++) {
-        M[i] = (float *)malloc(n * sizeof(float));
+        M[i] = (float *)malloc(n * sizeof(float)); //retornará um ponteiro do tipo float e serão alocados n tamanhos em bytes de um numero tipo float
         if (M[i] == NULL) {
             printf("Erro ao alocar memória.\n");
             return 1;
@@ -409,15 +414,15 @@ int main()
     // Preenche a matriz com valores aleatórios e imprime
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            M[i][j] = (rand()/100.0);
-            printf("%.1f\t", M[i][j]);
+            M[i][j] = (rand()/100.0); //Gera numeroes aleatórios entre 0.0 e 100.0
+            printf("%.1f\t", M[i][j]); 
         }
         printf("\n");
     }
 
     // Libera a memória de cada linha
     for (int i = 0; i < n; i++) {
-        free(M[i]);
+        free(M[i]); 
     }
     // Libera o array de ponteiros
     free(M);
