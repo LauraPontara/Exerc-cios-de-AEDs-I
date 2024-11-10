@@ -344,3 +344,87 @@ int main()
     return 0;
 }
 ````
+
+10. Resolução:
+
+```c
+#include <stdio.h>
+
+void func(int *px, int *py) {
+    px = py; //O ponteira px passará a apontar para o mesmo ENDEREÇO que py
+    *py = (*py) * (*px); //O CONTEÚDO apontado pelo py será multiplicado por ele mesmo 
+    *px = *px + 2; // O CONTEÚDO apontado por px (mesmo que apontado por py) será adicionado +2
+}
+
+int main() {
+    int x, y;
+    printf("Digite um valor para x:\n");
+    scanf("%d", &x);
+    printf("Digite um valor para y:\n");
+    scanf("%d", &y);
+    func(&x, &y); //Passa os endereçõs de x e y como parâmetros
+
+    printf("x = %d, y = %d\n", x, y);
+    /*Com x = 5 e y = 6:
+        Retorna: x = 5 e y = 38(6*6 + 2);
+    */
+
+    return 0;
+}
+````
+
+11. Resolução:
+12. Resolução:
+13. Resolução:
+```c
+#include <stdio.h>
+
+int main()
+{
+    int M[4][4], soma = 0;
+
+    // Leitura dos elementos da matriz
+    printf("Digite os elementos da matriz 4x4:\n");
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            printf("M[%d][%d]: ", i, j);
+            scanf("%d", &M[i][j]);
+        }
+    }
+
+    // Exibe a matriz completa
+    printf("\nMatriz 4x4:\n");
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            printf("%d\t", M[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Calcula a soma dos elementos abaixo da diagonal principal e mostra a diagonal principal
+       printf("Diagonal Principal:\n");
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            if(i == j)
+            {
+                printf("%d\n", M[i][j]);
+            }
+            else if (i > j)
+            {
+                soma += M[i][j];
+            }
+        }
+    }
+
+    printf("\nSoma dos elementos abaixo da diagonal principal: %d\n", soma);
+
+    return 0;
+}
+````
