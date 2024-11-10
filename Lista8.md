@@ -375,6 +375,56 @@ int main() {
 
 11. Resolução:
 12. Resolução:
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+    float **M; //Cria um ponteiro de um ponteiro para a matriz (bidimencional)
+    int n = 0;
+
+    printf("Digite a quantidade de colunas/linhas:\n");
+    scanf("%d", &n);
+
+    // Aloca um array de ponteiros para as linhas
+    M = (float **)malloc(n * sizeof(float *));
+    if (M == NULL) {
+        printf("Erro ao alocar memória.\n");
+        return 1;
+    }
+
+    // Aloca cada linha individualmente
+    for (int i = 0; i < n; i++) {
+        M[i] = (float *)malloc(n * sizeof(float));
+        if (M[i] == NULL) {
+            printf("Erro ao alocar memória.\n");
+            return 1;
+        }
+    }
+
+    srand(time(0));
+
+    // Preenche a matriz com valores aleatórios e imprime
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            M[i][j] = (rand()/100.0);
+            printf("%.1f\t", M[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Libera a memória de cada linha
+    for (int i = 0; i < n; i++) {
+        free(M[i]);
+    }
+    // Libera o array de ponteiros
+    free(M);
+
+    return 0;
+}
+````
 13. Resolução:
 ```c
 #include <stdio.h>
