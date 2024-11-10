@@ -422,8 +422,113 @@ int main()
             }
         }
     }
+````
+14. Resolução:
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-    printf("\nSoma dos elementos abaixo da diagonal principal: %d\n", soma);
+// Procedimento para preencher a matriz 5x5 automaticamente e imprimir
+void preencherMatriz(int M[5][5])
+{
+    // Inicializar a semente para números aleatórios
+    srand(time(0));
+
+    // Preencher a matriz com valores aleatórios entre 1 e 100
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            M[i][j] = rand() % 100 + 1;
+        }
+    }
+
+    // Exibir a matriz completa
+    printf("Matriz 5x5:\n");
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            printf("%d\t", M[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+// Funções de soma específicas
+int somaLinha4(int M[5][5])
+{
+    int soma = 0;
+    for (int j = 0; j < 5; j++)
+    {
+        soma += M[4][j];
+    }
+    return soma;
+}
+
+int somaColuna2(int M[5][5])
+{
+    int soma = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        soma += M[i][2];
+    }
+    return soma;
+}
+
+int somaDiagonalPrincipal(int M[5][5])
+{
+    int soma = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        soma += M[i][i]; //Elementos da diagonal principal tem sua linha e coluna iguais
+    }
+    return soma;
+}
+
+int somaDiagonalSecundaria(int M[5][5])
+{
+    int soma = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        for(int j = 0; j < 5; j++){
+            if( i + j == 4){
+/*Elementos da diagonal secundária tem a soma de sua linha + coluna igual
+a quantidade de linhas ou colunas da matriz - 1 (5 - 1 = 4 nesse caso)*/
+                soma += M[i][j];
+            }
+        }
+    }
+    return soma;
+}
+
+int somaTodosElementos(int M[5][5])
+{
+    int soma = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            soma += M[i][j];
+        }
+    }
+    return soma;
+}
+
+int main()
+{
+    int M[5][5];
+
+    // Preenche e exibe a matriz
+    preencherMatriz(M);
+
+    // Calcula e exibe as somas requisitadas
+    printf("\nSoma da linha 4: %d\n", somaLinha4(M));
+    printf("Soma da coluna 2: %d\n", somaColuna2(M));
+    printf("Soma da diagonal principal: %d\n", somaDiagonalPrincipal(M));
+    printf("Soma da diagonal secundaria: %d\n", somaDiagonalSecundaria(M));
+    printf("Soma de todos os elementos da matriz: %d\n", somaTodosElementos(M));
 
     return 0;
 }
