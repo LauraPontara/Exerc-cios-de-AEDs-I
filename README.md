@@ -71,7 +71,8 @@ sequência, faça um procedimento copiaNegativos que receba um vetor preenchido,
 todos os valores negativos deste vetor para um novo vetor, sem deixar elementos vazios entre os
 valores copiados. O vetor contendo números negativos deve conter até 10 elementos - após o
 último número negativo (caso não existam 10 número negativos) o vetor deve conter o número
-0. Faça um programa (main) que acione os procedimentos e imprima o vetor de números
+
+Faça um programa (main) que acione os procedimentos e imprima o vetor de números
 negativos, sem imprimir o valor zero.
 
 ```c
