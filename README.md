@@ -154,7 +154,7 @@ antes e após a alteração.
 
 9. Implemente um procedimento que calcule o comprimento e a área de uma circunferência de
 raio R. Esse procedimento deve obedecer ao cabeçalho a seguir:
-void calcCircunferencia (float R, float *compr, float *area)
+void calcCircunferencia (float R, float \*compr, float \*area)
 A área da superfície e o volume são calculados pelas equações:
 C=2*PI*R e A =PI*R^2
 
