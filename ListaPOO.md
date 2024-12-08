@@ -121,3 +121,159 @@ int main()
     return 0;
 }
 ````
+## Questão 4
+
+```c++
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class ContaCorrente
+{
+protected:
+    float saldo;
+public:
+    ContaCorrente()
+    {
+        saldo = 0;
+    }
+
+    void depositar(float valor)
+    {
+        saldo += valor;
+    }
+
+    virtual void sacar(float valor)
+    {
+        if((valor + (valor*0.005))<= saldo)
+        {
+            saldo -= (valor + (valor*0.005));
+        }
+        else
+        {
+            cout << "Saldo insuficiente" << endl;
+        }
+    }
+
+    float getSaldo()
+    {
+        return saldo;
+    }
+
+};
+
+class ContaEspecial : public ContaCorrente
+{
+public:
+    ContaEspecial(): ContaCorrente() {}
+
+    void sacar(float valor) override
+    {
+        if((valor+(valor*0.001))<= saldo)
+        {
+            saldo -= (valor+(valor*0.001));
+        }
+        else
+        {
+            cout << "Saldo insuficiente" << endl;
+        }
+    }
+};
+
+
+int main()
+{
+    int escolha = 0;
+
+    cout << "Escolha o tipo da conta: " << endl;
+    cout << "1 - Comum" << endl;
+    cout << "2 - Especial" << endl;
+    cin >> escolha;
+
+    switch(escolha)
+    {
+    case 1:
+    {
+        ContaCorrente NovaConta;
+        int opcao = 0;
+        do
+        {
+            cout << "O que deseja fazer?" << endl;
+            cout << "1 - Depositar \n 2 - Sacar \n 3 - Ver saldo \n 4 - Sair" << endl;
+            cin >> opcao;
+            switch(opcao)
+            {
+            case 1:
+            {
+                float quantia;
+                cout << "Quanto deseja depositar?" << endl;
+                cin >> quantia;
+                NovaConta.depositar(quantia);
+            }
+            break;
+            case 2:
+            {
+                float quantia;
+                cout << "Quanto deseja sacar?" << endl;
+                cin >> quantia;
+                NovaConta.sacar(quantia);
+            }
+            break;
+            case 3:
+                cout << "Saldo: " << NovaConta.getSaldo() << endl;
+            break;
+
+            default:
+                cout << "Opção inválida"<< endl;
+            }
+        }
+        while(opcao != 4);
+    }
+    break;
+    case 2:
+    {
+        ContaEspecial NovaConta;
+        int opcao = 0;
+        do
+        {
+            cout << "O que deseja fazer?" << endl;
+            cout << "1 - Depositar \n 2 - Sacar \n 3 - Ver saldo \n 4 - Sair" << endl;
+            cin >> opcao;
+            switch(opcao)
+            {
+            case 1:
+            {
+                float quantia;
+                cout << "Quanto deseja depositar?" << endl;
+                cin >> quantia;
+                NovaConta.depositar(quantia);
+            }
+            break;
+            case 2:
+            {
+                float quantia;
+                cout << "Quanto deseja sacar?" << endl;
+                cin >> quantia;
+                NovaConta.sacar(quantia);
+            }
+            break;
+            case 3:
+                cout<< "Saldo: " << NovaConta.getSaldo() << endl;
+            break;
+            default:
+                cout << "Opção inválida"<< endl;
+            }
+        }
+        while(opcao != 4);
+    }
+    break;
+
+    default:
+        cout << "Escolha inválida" << endl;
+    }
+
+
+    return 0;
+}
+````
