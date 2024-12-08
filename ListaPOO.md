@@ -277,3 +277,48 @@ int main()
     return 0;
 }
 ````
+## Questão 5
+```c++
+#include <iostream>
+
+using namespace std;
+
+class Circulo{
+private:
+    float raio;
+public:
+    Circulo(float raio){
+        this-> raio = raio;
+    }
+
+    Circulo(){
+        raio = 0;
+    }
+
+    float CalcularArea(){
+    return (3.14*raio*raio);
+    }
+
+    float CalcularDiamentro(){
+    return (raio*2);
+    }
+
+    float CalcularPerimetro(){
+    return (raio*2*3.14);
+    }
+};
+
+int main(){
+
+Circulo circulos[4] = {Circulo(2.0), Circulo(4.0), Circulo(5.0), Circulo(6.0)};
+
+for(int i = 0; i < 4; i++){
+    cout << "Circulo " << i+1 << endl;
+    cout << "Área: " << circulos[i].CalcularArea() << endl;
+    cout << "Diametro: " << circulos[i].CalcularDiamentro() << endl;
+    cout << "Perimetro: " << circulos[i].CalcularPerimetro() << endl;
+}
+
+return 0;
+}
+````
