@@ -322,3 +322,73 @@ for(int i = 0; i < 4; i++){
 return 0;
 }
 ````
+## Questão 6
+```c++
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Aluno
+{
+private:
+    string nome;
+    int matricula;
+    double notas[10];
+
+public:
+    Aluno(string nome, int matricula, double notas[])
+    {
+        this->nome = nome;
+        this->matricula = matricula;
+        for(int i = 0; i < 10; i++)
+        {
+            this->notas[i] = notas[i];
+        }
+    }
+
+    double CalculaMedia()
+    {
+        double soma = 0;
+        for(int i = 0; i < 10; i++)
+        {
+            soma += notas[i];
+        }
+        return (soma/10);
+    }
+
+    string getNome(){
+        return nome;
+    }
+};
+
+int main(){
+string nome;
+int matricula;
+double notas[10];
+
+for(int i=1; i <=2; i++){
+    cout << "Digite o nome do aluno " << i << endl;
+    cin.ignore();
+    getline(cin, nome);
+
+    cout << "Digite o número de matrícula: " << endl;
+    cin >> matricula;
+
+    for(int j = 0; j < 10; j++){
+        cout << "Digite a nota " << j+1<< endl;
+        cin >> notas[j];
+    }
+
+    if(i == 1){
+        Aluno aluno1(nome, matricula, notas);
+        cout << "Média das notas de " << aluno1.getNome()<< ": "<< aluno1.CalculaMedia() << endl;
+    }else{
+        Aluno aluno2(nome, matricula, notas);
+        cout << "Média das notas de " << aluno2.getNome()<< ": "<< aluno2.CalculaMedia() << endl;
+    }
+}
+
+return 0;
+}
+````
