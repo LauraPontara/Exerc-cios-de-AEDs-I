@@ -69,9 +69,14 @@ public:
 
 int main()
 {
-    Eletrodomestico eletrodomesticos[15];
+    int quantidade = 0;
 
-    for(int i = 0; i < 15; i++)
+    cout << "Quantos eletrodomesticos deseja cadastrar?" << endl;
+    cin>> quantidade;
+
+    Eletrodomestico eletrodomesticos[quantidade];
+
+    for(int i = 0; i < quantidade; i++)
     {
         string loja, telefone;
         float preco;
@@ -94,7 +99,7 @@ int main()
     int PosiMenor = 0, PosiMaior = 0;
     float somaPrecos = 0;
 
-    for(int i = 0; i < 15; i++)
+    for(int i = 0; i < quantidade; i++)
     {
         float precoEmAnalise = eletrodomesticos[i].getPreco();
         somaPrecos += precoEmAnalise;
@@ -110,7 +115,7 @@ int main()
         }
     }
 
-    float mediaPrecos = (somaPrecos/15);
+    float mediaPrecos = (somaPrecos/quantidade);
 
     cout << "Média de preços: " << mediaPrecos << endl;
     cout << "Menor preço: " << menorPreco << endl;
@@ -120,6 +125,7 @@ int main()
 
     return 0;
 }
+
 ````
 ## Questão 4
 
